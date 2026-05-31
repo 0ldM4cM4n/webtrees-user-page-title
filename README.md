@@ -1,0 +1,2 @@
+# webtrees-user-page-title
+This free Webtrees module personalizes the user page title by replacing the default generic "My page" heading with the actual name of the logged-in user. It offers two options for single-language English sites, and two options for multi-lingual sites.
