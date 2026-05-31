@@ -1,0 +1,47 @@
+<?php
+declare(strict_types=1);
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+/**
+ * @var Collection<int,string> $main_blocks
+ * @var Collection<int,string> $side_blocks
+ * @var string                 $title
+ * @var Tree                   $tree
+ */
+?>
+<h2 class="text-center">
+    <?php
+    // Uncomment ONE of the following four options and comment out the others.
+    //
+    // ENGLISH-ONLY SITES (simple string concatenation):
+    // Option 1: echo 'This page belongs to ' . Auth::user()->realName();
+    // Option 2: echo Auth::user()->realName() . ' owns this page';
+    //
+    // MULTILINGUAL SITES (I18N translation - recommended):
+    // Option 3 (active by default):
+    echo I18N::translate('This page belongs to %s', Auth::user()->realName());
+    // Option 4: echo I18N::translate('%s owns this page', Auth::user()->realName());
+    ?>
+</h2>
+<div class="row">
+    <?php if ($main_blocks->isEmpty() || $side_blocks->isEmpty()) : ?>
+        <div class="col-md-12 wt-main-blocks">
+            <?php foreach ($main_blocks->concat($side_blocks) as $block_id => $block) : ?>
+                <?= view('user-page-block', ['block_id' => $block_id, 'block' => $block, 'tree' => $tree]) ?>
+            <?php endforeach ?>
+        </div>
+    <?php else : ?>
+        <div class="col-md-8 wt-main-blocks">
+            <?php foreach ($main_blocks as $block_id => $block) : ?>
+                <?= view('user-page-block', ['block_id' => $block_id, 'block' => $block, 'tree' => $tree]) ?>
+            <?php endforeach ?>
+        </div>
+        <div class="col-md-4 wt-side-blocks">
+            <?php foreach ($side_blocks as $block_id => $block) : ?>
+                <?= view('user-page-block', ['block_id' => $block_id, 'block' => $block, 'tree' => $tree]) ?>
+            <?php endforeach ?>
+        </div>
+    <?php endif ?>
+</div>
