@@ -1,4 +1,4 @@
-# webtrees module: wt-user-page-title
+# wt-user-page-title
 
 This [webtrees](https://www.webtrees.net) module personalizes the user page title by replacing the default generic "My page" heading with the actual name of the logged-in user.
 
@@ -6,21 +6,18 @@ Based on [wt-module-custom-views](https://github.com/bertkoor/wt-module-custom-v
 
 ## Example
 Instead of the default:
-
-```
 My page
-```
 
 The page will display one of the following, depending on which version you choose:
-
-```
 This page belongs to John Smith
-```
 or
-
-```
 John Smith owns this page
-```
+
+## Features
+- ✅ Replaces the generic "My page" heading with the logged-in user's actual name
+- ✅ Four display options to suit your preference and language needs
+- ✅ Supports multiple languages via Webtrees' built-in translation system
+- ✅ No core Webtrees files modified — update safe!
 
 ## Compatibility
 
@@ -99,6 +96,15 @@ echo 'This page belongs to ' . Auth::user()->realName();
 
 That is all there is to it! Save the file and reload your Webtrees site to see the change.
 
+> 💡 **Note for experienced administrators:** You are free to modify the wording in any of the four options to suit your preference. However, please be careful with apostrophes. If you make a name possessive (e.g. "John Smith's page"), you must escape the apostrophe with a backslash, like this:
+> ```php
+> echo 'This is ' . Auth::user()->realName() . '\'s page';
+> ```
+> Failure to do so will cause a PHP syntax error.
+
+## Known limitations
+This module overrides the `user-page.phtml` view file. If a future Webtrees upgrade changes the core `user-page.phtml`, you may need to manually merge those changes into this module's version. See **Upgrade safety** above.
+
 ## Upgrade safety
 This module overrides only the `user-page.phtml` view file via the module system. No core Webtrees files are modified. Your customization is safe from being overwritten when you upgrade Webtrees.
 
@@ -121,6 +127,7 @@ The module will check for the latest available version whenever the Webtrees Con
 ## License
 Copyright (C) 2026 Bill Kochman.
 Based on work Copyright (C) 2025-2026 BertKoor.
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
