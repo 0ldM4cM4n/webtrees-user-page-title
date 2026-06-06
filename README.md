@@ -1,3 +1,5 @@
+[B&C Mods](assets/images/B_C-Mods-Logo-02-optimized.png)
+
 # wt-user-page-title
 
 This [webtrees](https://www.webtrees.net) module personalizes the user page title by replacing the default generic "My page" heading with the actual name of the logged-in user.
