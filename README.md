@@ -1,4 +1,4 @@
-[B&C Mods](assets/images/B-C-Mods-Logo-02-optimized.png)
+![B&C Mods](assets/images/B-C-Mods-Logo-02-optimized.png)
 
 # wt-user-page-title
 
